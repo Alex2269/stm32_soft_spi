@@ -1,0 +1,25 @@
+#!/bin/sh
+
+DIRS=$1
+
+replace() {
+  cd "$DIRS"
+  sed -i 's/\x0D//'  ${1}
+  #rm -f ${1}
+}
+
+echo "$DIRS" | while read d ; do
+  if test -n "$d" -a -d "$d"; then
+    find "$d" -type f -name '*.c' | while read SRC; do
+      replace "$SRC"
+    done
+  fi
+done
+
+echo "$DIRS" | while read d ; do
+  if test -n "$d" -a -d "$d"; then
+    find "$d" -type f -name '*.h' | while read SRC; do
+      replace "$SRC"
+    done
+  fi
+done

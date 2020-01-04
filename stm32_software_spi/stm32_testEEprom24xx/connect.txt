@@ -1,0 +1,17 @@
+
+
+eeprom           stm32
+5 SDA <--------> i2c1_SDA PB7 <----[Resistor-4kom-15kom]----> 3.3v
+6 SCL <--------> i2c1_SCL PB6 <----[Resistor-4kom-15kom]----> 3.3v
+1 GND
+2 GND
+3 GND
+4 GND
+7 GND²
+
+² GND or nc
+WC - Write Control (W version)
+Note: WC signal is only available for ST24/25W02 products.
+
+GND ground
+nc  not connected

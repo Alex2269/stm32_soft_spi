@@ -1,0 +1,17 @@
+#!/bin/sh
+
+DIRS=${1}
+
+replace() {
+ cd "$DIRS"
+ sed -i s/' pulse_high'/' pin_pulse_hi_low'/g ${1}
+ sed -i s/' pulse_low'/' pin_pulse_low_hi'/g ${1}
+}
+
+echo "$DIRS" | while read d ; do
+  if test -n "$d" -a -d "$d"; then
+    find "$d" -type f -name '*' | while read SRC; do
+      replace "$SRC"
+    done
+  fi
+done
